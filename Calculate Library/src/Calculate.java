@@ -25,6 +25,16 @@ public class Calculate {
 		double radian = ((3.14159*degree)/100);
 		return radian;
 	}
+	public static double discriminant (double b, double a, double c) {
+		double discriminant = b*b - 4*a*c;
+		return discriminant;
+	}
+	/*public static String toImproperFrac (int whole, int num, int den) {
+		int improper = (whole * den + num)/den;
+		return ""+improper + // + den;
+	}
+	*/
+	public static 
 }
 
 	
