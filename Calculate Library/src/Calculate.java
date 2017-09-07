@@ -13,6 +13,10 @@ public class Calculate {
 	public static int cube (int operand) {	
 		return operand * operand * operand;
 	}	
+	public static double average (double operand1, double operand2) {
+		double average = (operand1 + operand2)/2;
+		return average;
+	}
 	public static double average (double operand1, double operand2, double operand3) {
 		double average = (operand1 + operand2 + operand3)/3;
 		return average;
@@ -29,12 +33,10 @@ public class Calculate {
 		double discriminant = b*b - 4*a*c;
 		return discriminant;
 	}
-	/*public static String toImproperFrac (int whole, int num, int den) {
-		int improper = (whole * den + num)/den;
-		return ""+improper + // + den;
+	public static String toImproperFrac (int whole, int den, int num) {
+		int immproper = (whole * den + num);
+		return improper;
 	}
-	*/
-	public static 
 }
 
 	
