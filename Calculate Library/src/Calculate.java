@@ -35,7 +35,7 @@ public class Calculate {
 	}
 	public static String toImproperFrac (int whole, int den, int num) {
 		int immproper = (whole * den + num);
-		return improper;
+		return improper +"/"+ num;
 	}
 }
 
