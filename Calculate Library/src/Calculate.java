@@ -150,26 +150,28 @@ public class Calculate {
 	}
 	
 	//This method finds the greatest common factor of two integers
-	/*public static int gcf (int operand, int operand2) {
-		int n = max(operand1, operand2);
-		if ( isPrime(operand = true) || isPrime(operand2) = true) {
-return 1;	
-else {
-while (!isDivisibleBy (operand1, n) && (!isDivisibleBy (operand2, n) {
-	n--;
-}
-return n;
-}
+	public static int gcf (int operand1, int operand2) {
+		int n = (int) max(operand1, operand2);
+		if ( isPrime(operand1) || isPrime(operand2)) {
+				return 1;
+		} else {
+			while (!isDivisibleBy (operand1, n) || (!isDivisibleBy (operand2, n))) {
+				n--;
+			}
+			return n;
+		}
 	}
-	*/
+	
 	//This method finds the square root of a value rounded to two decimal places
-	/*public static double sqrt (double number) {
-		double sqrtOf = 0.5 * (number/ + );
+	public static double sqrt (double number) {
+		double guess = ;
+		while (guess)
+		double sqrtOf = 0.5 * (number/guess + guess );
 		
-		Calculate.round2(sqrtOf);
+		round2(sqrtOf);
 		return sqrtOf;
 	}
-	*/
+	
 }
 
 	
