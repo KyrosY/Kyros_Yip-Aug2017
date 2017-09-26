@@ -4,38 +4,43 @@
 */
 public class Calculate {
 	
-/*This method takes an integer and returns its square.
- * 
- */
+	//This method takes an integer and returns its square.
 	public static int square (int operand) {
 		return operand * operand;
 	}
+	//This method finds the cube of an integer
 	public static int cube (int operand) {	
 		return operand * operand * operand;
 	}	
+	//This method finds the average of two real numbers
 	public static double average (double operand1, double operand2) {
 		double average = (operand1 + operand2)/2;
 		return average;
 	}
+	//This method finds the average of three real numbers
 	public static double average (double operand1, double operand2, double operand3) {
 		double average = (operand1 + operand2 + operand3)/3;
 		return average;
 	}
+	//This method converts degrees to radians
 	public static double toDegrees (double radian) {
 		double degree = ((radian * 100)/3.14159);
 		return degree;
 	}
+	//This method converts radians to degrees
 	public static double toRadians (double degree) {
 		double radian = ((3.14159*degree)/100);
 		return radian;
 	}
+	//This method finds the discriminant of three values
 	public static double discriminant (double b, double a, double c) {
 		double discriminant = b*b - 4*a*c;
 		return discriminant;
 	}
-	public static String toImproperFrac (int whole, int den, int num) {
-		int immproper = (whole * den + num);
-		return improper +"/"+ num;
+	//This method converts a mixed number into an improper fraction
+	public static String toImproperFrac (int whole, int num, int den) {
+		int improper = (whole * den + num);
+		return improper + "/" + den;
 	}
 	//This method converts an improper fraction into a mixed number
 	public static String toMixedNum (int num, int den) {
@@ -133,11 +138,11 @@ public class Calculate {
 	//This method tests whether or not a number is prime
 	public static boolean isPrime (int operand) {
 		int n = 2;
-		while (!isDivisibleBy (operand, n));
+		while (!isDivisibleBy (operand, n)){
 			n++;
 		} 
 		if (n == operand) {
-			return true ;
+			return true;
 		}
 		else {
 			return false;
@@ -146,8 +151,15 @@ public class Calculate {
 	
 	//This method finds the greatest common factor of two integers
 	/*public static int gcf (int operand, int operand2) {
-		isDivisibleBy(operand, operand2);		
-		
+		int n = max(operand1, operand2);
+		if ( isPrime(operand = true) || isPrime(operand2) = true) {
+return 1;	
+else {
+while (!isDivisibleBy (operand1, n) && (!isDivisibleBy (operand2, n) {
+	n--;
+}
+return n;
+}
 	}
 	*/
 	//This method finds the square root of a value rounded to two decimal places
@@ -158,8 +170,6 @@ public class Calculate {
 		return sqrtOf;
 	}
 	*/
-}
-
 }
 
 	
