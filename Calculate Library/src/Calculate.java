@@ -164,14 +164,17 @@ public class Calculate {
 	
 	//This method finds the square root of a value rounded to two decimal places
 	public static double sqrt (double number) {
-		double guess = ;
-		while (guess)
-		double sqrtOf = 0.5 * (number/guess + guess );
+		double guess= number/10;
+		while (guess*guess > number+0.05 || guess*guess < number-0.05) {
+		double sqrtOf = 0.5 * (number/guess + guess);
+		guess=sqrtOf;
+		}
 		
-		round2(sqrtOf);
-		return sqrtOf;
+		return round2(guess);
 	}
+	//Part 4
 	
+	//This method finds the roots of a quadratic equation
 }
 
 	
