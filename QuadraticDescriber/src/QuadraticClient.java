@@ -12,7 +12,7 @@ public class QuadraticClient {
 		double b = userInput.nextDouble();
 		System.out.println("c: ");
 		double c = userInput.nextDouble();
-		System.out.println();
+		System.out.println(Quadratic.quadrDescriber(a, b, c));
 		
 	}	
 	}
