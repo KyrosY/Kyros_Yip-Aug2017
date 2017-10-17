@@ -1,4 +1,3 @@
-
 public class Quadratic {
 	public static String quadrDescriber(double a, double b, double c) {
 		String s = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + "x + " + c + "\n\n";
@@ -27,19 +26,19 @@ public class Quadratic {
 		int tempInt = (int) (orig * 1000);
 		int roundNum = tempInt % 10;
 		tempInt = tempInt / 10;
-		if (roundNum >= 5 && tempInt > 0)
-			tempInt++;
-		else if(roundNum <= -5 && tempInt <0)
-			tempInt--;
+			if (roundNum >= 5 && tempInt > 0)
+				tempInt++;
+			else if(roundNum <= -5 && tempInt <0)
+				tempInt--;
 		result= tempInt / 100.0;
 		return result;
 	}
 	public static double sqrt (double number) {
 		double guess= number/10;
-		while (guess*guess > number+0.05 || guess*guess < number-0.05) {
-		double sqrtOf = 0.5 * (number/guess + guess);
-		guess=sqrtOf;
-		}
+			while (guess*guess > number+0.05 || guess*guess < number-0.05) {
+				double sqrtOf = 0.5 * (number/guess + guess);
+				guess=sqrtOf;
+			}
 		return round2(guess);
 	}
 	public static String quadForm(double a, double b, double c) {
@@ -67,6 +66,4 @@ public class Quadratic {
 			}
 			return s;
 		}
-
 }
-
