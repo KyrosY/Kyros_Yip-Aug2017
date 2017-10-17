@@ -111,13 +111,15 @@ public class Calculate {
 		int tempInt = (int) (orig * 1000);
 		int roundNum = tempInt % 10;
 		tempInt = tempInt / 10;
-		if (roundNum >= 5 && tempInt > 0)
+		if (roundNum >= 5 && tempInt > 0) {
 			tempInt++;
-		else if(roundNum <= -5 && tempInt <0)
+		}
+		else if(roundNum <= -5 && tempInt <0) {
 			tempInt--;
+		}
 		result= tempInt / 100.0;
 		return result;
-	}
+		}
 	//Part 3
 	//This method raises a value to a positive integer power
 	public static double exponent(double base, int power) {
