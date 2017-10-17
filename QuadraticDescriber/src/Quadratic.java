@@ -1,8 +1,6 @@
 
 public class Quadratic {
 	public static String quadrDescriber(double a, double b, double c) {
-		boolean done = false;
-		while (!done) {
 		String s = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + "x + " + c + "\n\n";
 		String h = "";
 			if (a>0) {
@@ -101,12 +99,12 @@ public class Quadratic {
 		s+="y-intercept: " + c;
 		s+= "\n";
 		s+= "Do you want to keep going? <Type \"quit\" to end>";
-			if (userInput.charAt(0); = q){
-				done = true;
-			} else {
-				done = false;
-			}
-					}
+			//if (userInput.charAt(0); = q){
+			//	done = true;
+			//} else {
+				
+			//}
+		return s;
 		}
 }
 
