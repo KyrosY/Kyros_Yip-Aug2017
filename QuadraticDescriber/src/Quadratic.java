@@ -9,26 +9,15 @@ public class Quadratic {
 			h = "Down";
 			}	
 		s += "Opens: " + h + "\n";
-		double symmetry = (-b)/(2*a);
-		round2(symmetry);
+		double symmetry = round2((-b)/(2*a));
 		s += "Axis of Symmetry: " + symmetry + "\n";
-		double vertex = a * (symmetry*symmetry) + (b *symmetry) + c;
-		round2(vertex);
-		s+= "Vertex: <" + symmetry + ", " + vertex + ">" + "\n";
-		double roots = quadform(a,b,c);
-		s+= "x-intercepts: "  + roots;
-		s+=  "\n";
-		s+="y-intercept: " + c;
-		s+= "\n";
-		s+= "Do you want to keep going? <Type \"quit\" to end>";
-			if (userInput.charAt(0) == 'q'){
-				done = true;
-			} else {
-				
-			}
+		double vertex = round2(a * (symmetry*symmetry) + (b *symmetry) + c);
+		s+= "Vertex: (" + symmetry + ", " + vertex + ")" + "\n";
+		String roots = quadForm(a,b,c);
+		s+= "x-intercept(s): "  + roots + "\n";
+		s+="y-intercept: " + c + "\n";
 		return s;
 		}
-	
 	public static double discriminant (double b, double a, double c) {
 		double discriminant = b*b - 4*a*c;
 		return discriminant;
@@ -51,10 +40,9 @@ public class Quadratic {
 		double sqrtOf = 0.5 * (number/guess + guess);
 		guess=sqrtOf;
 		}
-		
 		return round2(guess);
 	}
-	public static String quadForm(int a, int b, int c) {
+	public static String quadForm(double a, double b, double c) {
 		String s = "no real roots";
 		double disc = discriminant(a,b,c);
 			if (disc < 0) {
@@ -76,21 +64,9 @@ public class Quadratic {
 			if (root2 < root1){
 				return root2 + " " + root1;
 				}
-		}
-			
-			
-			public static double sqrt(double number) {
-				double guess= number/10;
-				while (guess*guess > number+0.05 || guess*guess < number-0.05) {
-				double sqrtOf = 0.5 * (number/guess + guess);
-				guess=sqrtOf;
-				}
-				
-				return round2(guess);
 			}
-			
 			return s;
-	}
-	
+		}
+
 }
 
