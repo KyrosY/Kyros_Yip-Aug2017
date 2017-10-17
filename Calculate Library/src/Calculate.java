@@ -175,6 +175,31 @@ public class Calculate {
 	//Part 4
 	
 	//This method finds the roots of a quadratic equation
+	public static String quadForm(int a, int b, int c) {
+		String s = "no real roots";
+		double disc = discriminant(a,b,c);
+			if (disc < 0) {
+				return s;
+			}
+			else if (disc == 0) {
+				double root = -b/(2*a);
+				round2(root);
+				return "" + root;
+			}
+			else {
+				double root1 = (-b + sqrt(disc)) / (2*a);
+				round2(root1);
+				double root2 = (-b - sqrt(disc)) / (2*a);
+				round2(root2);
+			if (root1 < root2) {
+				return root1 + " " + root2;
+				}
+			if (root2 < root1){
+				return root2 + " " + root1;
+				}
+		}
+			return s;
+	}
 }
 
 	
