@@ -1,3 +1,7 @@
+/* Kyros Yip
+ * October 2017
+ * This is the part that is responsible for calculations
+*/
 public class Quadratic {
 	public static String quadrDescriber(double a, double b, double c) {
 		String s = "Description of the graph of: \n" + "y = " + a + "x^2 + " + b + "x + " + c + "\n\n";

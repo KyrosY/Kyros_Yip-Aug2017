@@ -1,3 +1,7 @@
+/* Kyros Yip
+ * October 2017
+ * This is the part that handles interactions with the user
+*/
 import java.util.Scanner;
 
 public class QuadraticClient {
