@@ -24,16 +24,16 @@ public class Calculate {
 	}
 	//This method converts degrees to radians
 	public static double toDegrees (double radian) {
-		double degree = ((radian * 100)/3.14159);
+		double degree = ((radian * 180)/3.14159);
 		return degree;
 	}
 	//This method converts radians to degrees
 	public static double toRadians (double degree) {
-		double radian = ((3.14159*degree)/100);
+		double radian = ((3.14159*degree)/180);
 		return radian;
 	}
 	//This method finds the discriminant of three values
-	public static double discriminant (double b, double a, double c) {
+	public static double discriminant (double a, double b, double c) {
 		double discriminant = b*b - 4*a*c;
 		return discriminant;
 	}
@@ -50,7 +50,7 @@ public class Calculate {
 	}
 	//This method converts the form (ax + b)(cx + d) into a quadratic equation
 	public static String foil (int a, int b, int c, int d, String n) {
-		return (a * c) + ("n^2") + " + " + (a * d + b * c) + "n" + " + " + (b * d);
+		return (a * c) + (n+"^2") + " + " + (a * d + b * c) + n + "+" + (b * d);
 	}
 	//Part 2
 	//This method determines if one method is divisible by another
@@ -107,19 +107,19 @@ public class Calculate {
 		 */
 	//This method rounds to two decimal places
 	public static double round2(double orig) {
-		double result = 0.0;
-		int tempInt = (int) (orig * 1000);
-		int roundNum = tempInt % 10;
-		tempInt = tempInt / 10;
-		if (roundNum >= 5 && tempInt > 0) {
-			tempInt++;
-		}
-		else if(roundNum <= -5 && tempInt <0) {
-			tempInt--;
-		}
-		result= tempInt / 100.0;
-		return result;
-		}
+		double newNum = orig*100;
+		double remainder = newNum % 1;
+			if(remainder >= 0.5 ) {
+				newNum = newNum + 1;
+			}
+			if(remainder <= -0.5){
+				newNum = newNum - 1;		
+			}
+			newNum = newNum - remainder;
+		newNum = newNum/100;
+		return newNum;
+	}
+	
 	//Part 3
 	//This method raises a value to a positive integer power
 	public static double exponent(double base, int power) {
@@ -183,21 +183,19 @@ public class Calculate {
 			if (disc < 0) {
 				return s;
 			}
-			else if (disc == 0) {
-				double root = -b/(2*a);
+			else if (sqrt(disc) == 0) {
+				double root = (-b)/(2*a);
 				round2(root);
 				return "" + root;
 			}
 			else {
 				double root1 = (-b + sqrt(disc)) / (2*a);
-				round2(root1);
 				double root2 = (-b - sqrt(disc)) / (2*a);
-				round2(root2);
 			if (root1 < root2) {
-				return root1 + " " + root2;
+				return round2(root1) + " " + round2(root2);
 				}
 			if (root2 < root1){
-				return root2 + " " + root1;
+				return round2(root2) + " " + round2(root1);
 				}
 		}
 			return s;
@@ -205,3 +203,5 @@ public class Calculate {
 }
 
 	
+
+
