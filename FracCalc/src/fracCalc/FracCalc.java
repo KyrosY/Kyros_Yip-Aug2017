@@ -50,11 +50,14 @@ public class FracCalc {
    	    int[] improper = toImproperfrac(frac1[0],frac1[1],frac1[2]);
 	    int[] improper2 = toImproperfrac(frac2[0],frac2[1],frac2[2]);
    	    
+	    int [] answer = new int[2];
    	    String end = "";
     	if (operator.equals("+") || operator.equals("-")) {
-    			end = (addition(improper,operator, improper2));
+    			answer = addition(improper,operator, improper2);
+    			end = simplify(answer[0], answer[1]);
     	} else if(operator.equals("*") || operator.equals("/")) {
-    			end = (multiplication(improper, operator, improper2));		
+    			answer = multiplication(improper,operator, improper2);
+    			end = simplify(answer[0], answer[1]);	
     	}
 		return end;
     }
@@ -87,145 +90,125 @@ public class FracCalc {
 	   String[] answer = { whole, numerator, denominator};
        return answer;
     }
-   public static String addition( int[] frac1, String operator, int[] frac2) {
-	   int denom = frac1[1];
-	   frac1[0]*=frac2[1];
-	   frac1[1]*=frac2[1];
-	   frac2[0]*=denom;
+   public static int[] addition( int[] frac1, String operator, int[] frac2) {
+	   int commonDen = frac1[1] * frac2[1];
+	   frac1[0] *= frac2[1];
+	   frac1[1] *= frac2[0];
 	   if(operator.equals("-")) {
-		   frac2[0] = -frac2[0];
+		   frac1[1] = -frac1[1];
 	   }
-	   int x  = frac1[0]+frac2[0]; 
-	   int y = frac1[1];
-	   String result = x + "/" + y;
-       //int[] result = {x,y};
+	   int x  = frac1[0]+frac1[1]; 
+       int[] result = {x,commonDen};
 	   return result;
 	   
    }
-   public static String multiplication(int[] frac1, String operator, int[] frac2) {
+   public static int[] multiplication(int[] frac1, String operator, int[] frac2) {
+	   int num = 0;
+	   int den = 1;
 	   if(operator.equals("/")) {
 		   int denom = frac2[0];
 		   frac2[0]=frac2[1];
 		   frac2[1]=denom;
 	   }
-	   frac1[0]*=frac2[0];
-	   frac1[1]*=frac2[1]; 
-	   if (frac1[0] ==0 && frac1[1] ==0) {
-		   frac1[0] = -frac1[0];
-		   frac1[1] = -frac1[1];
+	   num = frac1[0]*frac2[0];
+	   den = frac1[1]*frac2[1]; 
+	   if (num < 0 && den < 0) {
+		   num = -num;
+		   den = -den;
 	   }
-	   String x = frac1[0] + "/" + frac1[1];
 	   
-	   //int[] x = {frac1[0], frac1[1]};
+	   int[] x = {num, den};
 	   return x;
 	   
    }
-   /*
-   public static String simplify(int[] frac) {
+   
+   public static String simplify(int num, int den) {
 	   String answer = "";
-	   int gcf = gcf(frac[0], frac[1]);
-	   int num = frac[0] / gcf;
-	   int den = frac[1] / gcf;
-	   if(num>0 && den<0) {
+	   int gcf = gcf(num, den);
+	    num /= gcf;
+	    den /= gcf;
+	   if(num > 0 && den < 0) {
 		   num=-num;
 		   den=-den;
 	   }
+	   if(num > den || num < 0 && num < den) {
+		   answer = toMixedNum(num, den);
+		   if(answer.charAt(0)=='0') {
+			   answer = num + "/" + den;
+		   } 
+	   } else {
+			   answer = num + "/" + den;
+		   }
 	   if(num == 0) {
 		   answer = "0";
 	   } 
 	   if(den == 1) {
 		   answer = num + "";
 	   } 
-	   if(num>den || num <0 && num<den) {
-		   answer = toMixedNum(num, den);
-		   if(answer.charAt(0)=='0') {
-			   answer = num + "/" + den;
-		   }
-	   } else {
-		   answer = num + "/" + den;
-	   }
+	   if (den == 0) {
+			throw new IllegalArgumentException("ERROR: Cannot divide by 0.");
+		}
 	   return answer;
    }
-   */
+   
    //Calculate methods
    public static boolean isDivisibleBy(int num, int den) {
+	   if (den == 0) {
+			throw new IllegalArgumentException("ERROR: Cannot be divided by 0.");
+		}
 		return num % den ==0;
 	}
-   public static int[] toImproperfrac (int whole, int secondNum, int den) {
-	   int improper = 0;
-	   if(den>0) {
-		improper = (whole * den);
-	   } else {
-		   improper = whole;
-	   }
-		if(whole >=0) {
-			improper += secondNum;
+   public static int[] toImproperfrac (int whole, int num, int den) {
+	   int improper = (whole * den);
+		if(whole >= 0) {
+			improper += num;
 		} else {
-			improper -= secondNum;
+			improper -= num;
 		}
 		int[] arr = {improper,den};
 		return arr;
 	}
    public static String toMixedNum (int num, int den) {
-		int improper = num/den;
-		int remainder = num%den;
-		if (remainder<0) {
-			remainder = -remainder;
+		int improper = num / den;
+		int remainder = num % den;
+		if (improper == 0) {
+			return improper + "_" + remainder + "/" + den;
+		} else {
+			return improper + "_" + absValue(remainder) + "/" + absValue(den);
 		}
-		if (den <0) {
-			den = -den;
-		}
-		return improper + "_" + remainder + "/" + den;
 	}
    public static double max(double frac1, double frac2){
 		if (frac1 > frac2) {
-		return frac1;
+			return frac1;
+		} else {
+			return frac2;
 		}
-		if (frac2 > frac1){
-		return frac2;
-		}
-		return frac2;
 	}
    public static int min (int operand1, int operand2){
 		if (operand1 < operand2) {
-		return operand1;
-		}
-		if (operand2 < operand1){
-		return operand2;}
-		return operand2;
-	}
-   public static boolean isPrime (int operand) {
-		int n = 2;
-		while (!isDivisibleBy (operand, n)){
-			n++;
-		} 
-		if (n == operand) {
-			return true;
-		}
-		else {
-			return false;
-		}
+			return operand1;
+		} else {
+			return operand2;
+			}
 	}
    public static int absValue (int operand){
-		if (operand >= 0) {
-		return operand;
-		}
-		if (operand < 0){
-		return operand + (operand * -2);
-		}
-		return operand;
-	}
-   public static int gcf (int operand1, int operand2) {
-		int n = (int) min(operand1, operand2);
-		operand1=absValue(operand1);
-		operand2=absValue(operand2);
-		if ( isPrime(operand1) || isPrime(operand2)) {
-				return 1;
+	   if (operand < 0) {
+			return -operand;
 		} else {
-			while (!isDivisibleBy (operand1, n) || (!isDivisibleBy (operand2, n))) {
-				n--;
-			}
-			return n;
+			return operand;
 		}
-   }
+	}
+   public static int gcf(int operand1, int operand2) {
+		int gcf = 1;
+		operand1 = absValue(operand1);
+		operand2 = absValue(operand2);
+		for (int i = 1; i <= min(operand1, operand2); i++) {
+			if (isDivisibleBy(operand1, i) && isDivisibleBy(operand2, i)) {
+				if (gcf < i) {
+					gcf = i;
+				}
+			}
+		}
+		return gcf;
+	}
 }
