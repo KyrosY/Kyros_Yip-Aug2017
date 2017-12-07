@@ -52,9 +52,9 @@ public class FracCalc {
    	    
    	    String end = "";
     	if (operator.equals("+") || operator.equals("-")) {
-    			end = simplify(addition(improper,operator, improper2));
+    			end = (addition(improper,operator, improper2));
     	} else if(operator.equals("*") || operator.equals("/")) {
-    			end = simplify(multiplication(improper, operator, improper2));		
+    			end = (multiplication(improper, operator, improper2));		
     	}
 		return end;
     }
@@ -78,16 +78,16 @@ public class FracCalc {
     	} else {
     		whole = "0";
     		if(operand.contains("/")) {
-    			String [] frac1tion = operand.split("/");
-    			numerator=frac1tion[0];
-    			denominator=frac1tion[1];
+    			String [] fraction = operand.split("/");
+    			numerator=fraction[0];
+    			denominator=fraction[1];
     		}
     		
     	}
 	   String[] answer = { whole, numerator, denominator};
        return answer;
     }
-   public static int[] addition( int[] frac1, String operator, int[] frac2) {
+   public static String addition( int[] frac1, String operator, int[] frac2) {
 	   int denom = frac1[1];
 	   frac1[0]*=frac2[1];
 	   frac1[1]*=frac2[1];
@@ -97,10 +97,12 @@ public class FracCalc {
 	   }
 	   int x  = frac1[0]+frac2[0]; 
 	   int y = frac1[1];
-       int[] result = {x,y};
+	   String result = x + "/" + y;
+       //int[] result = {x,y};
 	   return result;
+	   
    }
-   public static int[] multiplication(int[] frac1, String operator, int[] frac2) {
+   public static String multiplication(int[] frac1, String operator, int[] frac2) {
 	   if(operator.equals("/")) {
 		   int denom = frac2[0];
 		   frac2[0]=frac2[1];
@@ -112,9 +114,13 @@ public class FracCalc {
 		   frac1[0] = -frac1[0];
 		   frac1[1] = -frac1[1];
 	   }
-	   int[] x = {frac1[0], frac1[1]};
+	   String x = frac1[0] + "/" + frac1[1];
+	   
+	   //int[] x = {frac1[0], frac1[1]};
 	   return x;
+	   
    }
+   /*
    public static String simplify(int[] frac) {
 	   String answer = "";
 	   int gcf = gcf(frac[0], frac[1]);
@@ -140,6 +146,7 @@ public class FracCalc {
 	   }
 	   return answer;
    }
+   */
    //Calculate methods
    public static boolean isDivisibleBy(int num, int den) {
 		return num % den ==0;
