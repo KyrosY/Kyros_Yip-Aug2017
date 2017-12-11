@@ -38,8 +38,8 @@ public class FracCalc {
     	String operator = split[1];
     	String secondNum = split[2];
     	
-    	String [] splitNum = splitoperators(firstNum);
-    	String [] splitNum2 = splitoperators(secondNum);
+    	String [] splitNum = splitOperators(firstNum);
+    	String [] splitNum2 = splitOperators(secondNum);
     	int [] frac1 = new int[splitNum.length];
    	    int [] frac2 = new int[splitNum.length];
    	   
@@ -47,13 +47,14 @@ public class FracCalc {
    		   frac1[i]=Integer.parseInt(splitNum[i]);
    		   frac2[i]=Integer.parseInt(splitNum2[i]);
    	    }
+   	    
    	    int[] improper = toImproperfrac(frac1[0],frac1[1],frac1[2]);
 	    int[] improper2 = toImproperfrac(frac2[0],frac2[1],frac2[2]);
    	    
 	    int [] answer = new int[2];
    	    String end = "";
     	if (operator.equals("+") || operator.equals("-")) {
-    			answer = addition(improper,operator, improper2);
+    			answer = addition(improper, operator, improper2);
     			end = simplify(answer[0], answer[1]);
     	} else if(operator.equals("*") || operator.equals("/")) {
     			answer = multiplication(improper,operator, improper2);
@@ -62,13 +63,13 @@ public class FracCalc {
 		return end;
     }
     // TODO: Fill in the space below with any helper methods that you think you will need
-   public static String[] splitoperators(String operand) {
+   public static String[] splitOperators(String operand) {
 	   String whole="0";
 	   String numerator="0";
 	   String denominator="0";
 	  
 	   if(!operand.contains("/")) {
-    		whole=operand;
+    		whole= operand;
     		numerator = "0";
     		denominator = "1";
     	} else if(operand.contains("_")) {
@@ -80,44 +81,39 @@ public class FracCalc {
     		numerator=thirdArray[1];
     	} else {
     		whole = "0";
-    		if(operand.contains("/")) {
-    			String [] fraction = operand.split("/");
-    			numerator=fraction[0];
-    			denominator=fraction[1];
-    		}
-    		
+    		String [] fraction = operand.split("/");
+    		numerator=fraction[0];
+    		denominator=fraction[1];  		
     	}
-	   String[] answer = { whole, numerator, denominator};
+	   String[] answer = {whole, numerator, denominator};
        return answer;
     }
    public static int[] addition( int[] frac1, String operator, int[] frac2) {
-	   int commonDen = frac1[1] * frac2[1];
+	   int bottom = frac1[1] * frac2[1];
 	   frac1[0] *= frac2[1];
 	   frac1[1] *= frac2[0];
 	   if(operator.equals("-")) {
 		   frac1[1] = -frac1[1];
 	   }
-	   int x  = frac1[0]+frac1[1]; 
-       int[] result = {x,commonDen};
+	   int top  = frac1[0]+frac1[1]; 
+       int[] result = {top,bottom};
 	   return result;
 	   
    }
    public static int[] multiplication(int[] frac1, String operator, int[] frac2) {
-	   int num = 0;
-	   int den = 1;
 	   if(operator.equals("/")) {
 		   int denom = frac2[0];
 		   frac2[0]=frac2[1];
 		   frac2[1]=denom;
 	   }
-	   num = frac1[0]*frac2[0];
-	   den = frac1[1]*frac2[1]; 
-	   if (num < 0 && den < 0) {
-		   num = -num;
-		   den = -den;
+	   frac1[0]*=frac2[0];
+	   frac1[1]*=frac2[1]; 
+	   if (frac1[0] < 0 && frac1[1] < 0) {
+		   frac1[0] = -frac1[0];
+		   frac1[1] = -frac1[1];
 	   }
 	   
-	   int[] x = {num, den};
+	   int[] x = {frac1[0], frac1[1]};
 	   return x;
 	   
    }
@@ -136,7 +132,8 @@ public class FracCalc {
 		   if(answer.charAt(0)=='0') {
 			   answer = num + "/" + den;
 		   } 
-	   } else {
+	   }   
+	   else {
 			   answer = num + "/" + den;
 		   }
 	   if(num == 0) {
@@ -145,17 +142,11 @@ public class FracCalc {
 	   if(den == 1) {
 		   answer = num + "";
 	   } 
-	   if (den == 0) {
-			throw new IllegalArgumentException("ERROR: Cannot divide by 0.");
-		}
 	   return answer;
    }
    
    //Calculate methods
    public static boolean isDivisibleBy(int num, int den) {
-	   if (den == 0) {
-			throw new IllegalArgumentException("ERROR: Cannot be divided by 0.");
-		}
 		return num % den ==0;
 	}
    public static int[] toImproperfrac (int whole, int num, int den) {
@@ -171,11 +162,7 @@ public class FracCalc {
    public static String toMixedNum (int num, int den) {
 		int improper = num / den;
 		int remainder = num % den;
-		if (improper == 0) {
-			return improper + "_" + remainder + "/" + den;
-		} else {
-			return improper + "_" + absValue(remainder) + "/" + absValue(den);
-		}
+		return improper + "_" + absValue(remainder) + "/" + absValue(den);		
 	}
    public static double max(double frac1, double frac2){
 		if (frac1 > frac2) {
@@ -203,10 +190,8 @@ public class FracCalc {
 		operand1 = absValue(operand1);
 		operand2 = absValue(operand2);
 		for (int i = 1; i <= min(operand1, operand2); i++) {
-			if (isDivisibleBy(operand1, i) && isDivisibleBy(operand2, i)) {
-				if (gcf < i) {
+			if (isDivisibleBy(operand1, i) && isDivisibleBy(operand2, i)) {	
 					gcf = i;
-				}
 			}
 		}
 		return gcf;
