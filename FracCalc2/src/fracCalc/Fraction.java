@@ -23,7 +23,7 @@ public class FracCalc {
     	userInput.close();
     }
 }
-*/
+//*/
 public class Fraction {
 	private int whole;
 	private int numerator;
@@ -44,23 +44,21 @@ public void toImproper() {
 			improper -= numerator;
 		}
 		int[] arr = {improper,denominator};
-		return arr;
 	}
 }
 public int toInt(String str) {
 	int integer = Integer.parseInt(str);
 	return integer;
 }
-public void simplify() {
-	
+public String[] splitoperators(String operand) {	  
 }
-/*ublic String toString() {
+	
+public void simplify() {
+	}
+/*public String toString() {
 	string str = 
 }
 */
-public static String produceAnswer(String input) {
-
-}
 }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
