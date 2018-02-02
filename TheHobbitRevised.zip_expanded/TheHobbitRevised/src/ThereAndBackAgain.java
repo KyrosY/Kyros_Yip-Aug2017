@@ -20,8 +20,9 @@ public class ThereAndBackAgain
 		//                   Sam has traveled 50 miles.
 		//                   Gimli has traveled 50 miles.
 		
-		
-		
+		Traveler party1 = {frodo, sam, gimli};
+		for(Traveler trav : party1) {
+			trav.travel(50);
 		
 		
 		
