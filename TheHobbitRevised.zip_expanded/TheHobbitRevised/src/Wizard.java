@@ -1,4 +1,3 @@
-
 public class Wizard extends Traveler
 {
 	//Call Traveler's constructor (look it up p587) to set the name field and then 
@@ -14,16 +13,18 @@ public class Wizard extends Traveler
 	
 	public Wizard(String name, String color)
 	{
-	
+	super(name);
+	this.color = color;
 	}
 	
 	public void travel(int miles)
 	{
-		
+		travel(miles*3);
 	}
 	
 	public String getName()
 	{
-		
+		return getName() + color;
 	}
 }
+

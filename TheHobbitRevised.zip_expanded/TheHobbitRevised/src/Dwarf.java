@@ -8,9 +8,10 @@ public class Dwarf extends Traveler
 	//Complete the constructor
 	public Dwarf(String name)
 	{
-		
+		super(name);
 	}
 
 	
 
 }
+

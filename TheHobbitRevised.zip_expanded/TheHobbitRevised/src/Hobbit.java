@@ -1,4 +1,3 @@
-
 public class Hobbit extends Traveler
 {
 	//Call Traveler's constructor (look it up p587) to set the name field and then 
@@ -10,9 +9,6 @@ public class Hobbit extends Traveler
 	
 	public Hobbit(String name)
 	{
-		
+		super(name);
+		ringObsessed = false;
 	}
-	
-	
-	
-}
