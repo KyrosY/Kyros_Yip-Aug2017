@@ -10,6 +10,6 @@ public class Hobbit extends Traveler
 	public Hobbit(String name)
 	{
 		super(name);
-		this.ringObsessed = false;
+		ringObsessed = false;
 	}
 }

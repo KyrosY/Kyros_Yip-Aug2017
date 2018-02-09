@@ -9,7 +9,7 @@ public class Traveler
 	//constructor
 	public Traveler(String name)
 	{
-		this.distanceTraveled = 0;
+		distanceTraveled = 0;
 		this.name = name;
 	}
 	

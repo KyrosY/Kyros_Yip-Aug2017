@@ -24,7 +24,7 @@ public class Wizard extends Traveler
 	
 	public String getName()
 	{
-		return getName() + this.color;
+		return super.getName() + "the" + color;
 	}
 }
 
