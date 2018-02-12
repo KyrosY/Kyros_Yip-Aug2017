@@ -16,10 +16,15 @@ public abstract class Prism
 	private double height;
 	
 	//constructor
-	public Prism(double height) {
+	public Prism(double height)
+	{
 		this.height = height;
 	}
 
+	public double getHeight()
+	{
+		return height;
+	}
 
 	//methods
 	public abstract double calcAreaOfBase();
