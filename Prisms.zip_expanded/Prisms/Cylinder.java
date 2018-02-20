@@ -19,11 +19,11 @@ public class Cylinder extends Prism
 	//methods
 	public double calcAreaOfBase()
 	{
-		return 3.1415 * radius * radius;
+		return Math.PI * radius * radius;
 	}
 	public double calcPerimeter() 
 	{
-		return 2 * 3.1415 * radius;
+		return 2 * Math.PI * radius;
 	}
 	
 }
