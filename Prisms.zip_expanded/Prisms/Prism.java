@@ -10,7 +10,7 @@
  */
 
 
-public abstract class Prism  
+public abstract class Prism extends ThreeDShape 
 {
 	//field
 	private double height;
