@@ -4,7 +4,6 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-
 	@Override
 	public String processCommand(String command)
 	{
@@ -16,7 +15,7 @@ public class Spreadsheet implements Grid
 	public int getRows()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return 00;
 	}
 
 	@Override

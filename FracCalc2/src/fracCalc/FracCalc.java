@@ -10,7 +10,7 @@ public class FracCalc {
     	while(!done) {
     		System.out.println("Enter your input: ");
     		String equation = userInput.nextLine();
-    	//	System.out.println(produceAnswer(equation));
+    		System.out.println(Fraction.produceAnswer(equation));
     		System.out.println("keep going?");
     		String s = userInput.next();
     		if (s.charAt(0) == 'q'){
@@ -19,4 +19,6 @@ public class FracCalc {
     	}
     	userInput.close();
     }
+
+
 }

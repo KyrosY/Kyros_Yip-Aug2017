@@ -4,26 +4,7 @@
  */
 package fracCalc;
 import java.util.*;
-/*
-public class FracCalc {
-    public static void main(String[] args) {
-        // TODO: Read the input from the user and call produceAnswer with an equation
-    	Scanner userInput = new Scanner(System.in);
-    	boolean done = false;
-    	while(!done) {
-    		System.out.println("Enter your input: ");
-    		String equation = userInput.nextLine();
-    		System.out.println(produceAnswer(equation));
-    		System.out.println("keep going?");
-    		String s = userInput.next();
-    		if (s.charAt(0) == 'q'){
-    			done = true;
-    		}
-    	}
-    	userInput.close();
-    }
-}
-//*/
+
 public class Fraction {
 	private int whole;
 	private int numerator;
@@ -45,21 +26,12 @@ public void toImproper() {
 		}
 		int[] arr = {improper,denominator};
 	}
-}
+
 public int toInt(String str) {
 	int integer = Integer.parseInt(str);
 	return integer;
 }
-public String[] splitoperators(String operand) {	  
-}
-	
-public void simplify() {
-	}
-/*public String toString() {
-	string str = 
-}
-*/
-}
+
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
     // This function takes a String 'input' and produces the result
@@ -69,7 +41,7 @@ public void simplify() {
     //        
     // The function should return the result of the frac1tion after it has been calculated
     //      e.g. return ==> "1_1/4"
-    /*
+    
    public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
     	String [] split = input.split(" ");
@@ -234,6 +206,7 @@ public void simplify() {
 			}
 		}
 		return gcf;
-	}
-}
-*/
+   }
+  }
+
+
