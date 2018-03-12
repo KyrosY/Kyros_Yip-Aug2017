@@ -4,30 +4,33 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-	//public Spreadsheet(EmptyCell[][]) 
+	private int cols = 12;
+	private int rows = 20;
+	private EmptyCell[][] cells;
+	public Spreadsheet() 
 	{
-		
+		cells = new EmptyCell[rows][cols];
 	}
 	@Override
 	
 	public String processCommand(String command)
 	{
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	@Override
 	public int getRows()
 	{
 		// TODO Auto-generated method stub
-		return 20;
+		return rows;
 	}
 
 	@Override
 	public int getCols()
 	{
 		// TODO Auto-generated method stub
-		return 12;
+		return cols;
 	}
 
 	@Override

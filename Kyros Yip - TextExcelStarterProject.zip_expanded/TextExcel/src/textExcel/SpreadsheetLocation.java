@@ -4,7 +4,6 @@ package textExcel;
 
 public class SpreadsheetLocation implements Location
 {
-
     @Override
     public int getRow()
     {
@@ -22,6 +21,8 @@ public class SpreadsheetLocation implements Location
     public SpreadsheetLocation(String cellName)
     {
         // TODO: Fill this out with your own code
+    	int colNumber = Character.toUpperCase(cellName.charAt(0))- 'A';
+    	int rowNumber = Integer.parseInt(cellName.substring(1, cellName.length()-1)) - 1;
     }
 
 }
