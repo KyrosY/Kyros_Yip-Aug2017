@@ -9,14 +9,14 @@ public class SpreadsheetLocation implements Location
     public int getRow()
     {
         // TODO Auto-generated method stub
-        return 0;
+        return 20;
     }
 
     @Override
     public int getCol()
     {
         // TODO Auto-generated method stub
-        return 0;
+        return 12;
     }
     
     public SpreadsheetLocation(String cellName)
