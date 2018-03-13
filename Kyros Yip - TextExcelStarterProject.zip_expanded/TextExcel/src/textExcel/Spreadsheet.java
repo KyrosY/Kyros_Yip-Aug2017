@@ -59,7 +59,7 @@ public class Spreadsheet implements Grid
 			}
 			for(int j=0; j<cells[i].length; j++) {
 				//should only display 10 characters
-			gridText += cells[i][j].abbreviatedCellText() + "|";
+				gridText += cells[i][j].abbreviatedCellText() + "|";
 			}
 			gridText += "\n";
 		}
