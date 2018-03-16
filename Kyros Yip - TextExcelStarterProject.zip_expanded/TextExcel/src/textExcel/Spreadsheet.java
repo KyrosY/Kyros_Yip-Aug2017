@@ -6,8 +6,7 @@ public class Spreadsheet implements Grid
 {
 	private int cols = 12;
 	private int rows = 20;
-	private EmptyCell[][] cells;
-	private String gridText = "   ";
+	private EmptyCell[][] cells; 
 	public Spreadsheet() 
 	{
 		cells = new EmptyCell[rows][cols];
@@ -19,8 +18,8 @@ public class Spreadsheet implements Grid
 		SpreadsheetLocation location = new SpreadsheetLocation(command);
 		Cell loc = cells[location.getCol()][location.getRow()];
 		// TODO Auto-generated method stub
-		
-		return gridText;
+		return loc.fullCellText();
+		//return getGridText();
 	}
 
 	@Override
@@ -48,7 +47,7 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		
+		String gridText = "   ";
 		gridText += "|";
 		for (int i = 65; i <= 76; i++) {
 			gridText += (char)i + "          |";	
