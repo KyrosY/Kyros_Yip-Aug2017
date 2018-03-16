@@ -15,11 +15,23 @@ public class Spreadsheet implements Grid
 	
 	public String processCommand(String command)
 	{
-		SpreadsheetLocation location = new SpreadsheetLocation(command);
-		Cell loc = cells[location.getCol()][location.getRow()];
-		// TODO Auto-generated method stub
-		return loc.fullCellText();
-		//return getGridText();
+		String[] arr = command.split(" ");
+		
+		if(command.length() <= 3)
+		{
+			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			Cell valueAtLoc = cells[location.getCol()][location.getRow()];
+			return valueAtLoc.fullCellText();
+		} else if(arr.length == 3) {
+			SpreadsheetLocation loc = new SpreadsheetLocation(arr[0]);
+			//cells[loc.getCol]
+		} else if(arr[0].length() == 5 && arr.length == 1) {
+			
+		} else if (arr.length == 2) {
+			
+		}
+			
+		return getGridText();
 	}
 
 	@Override
